@@ -23,5 +23,7 @@
 - (IBAction)stopClawButtonPressed:(id)sender;
 
 - (IBAction)readStatusButtonPressed:(id)sender;
+
+- (IBAction)speedSliderMoved:(id)sender;
 @end
 

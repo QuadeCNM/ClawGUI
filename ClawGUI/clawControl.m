@@ -374,7 +374,7 @@ UART_t myUART;
     
 }
 
-- (BOOL)readStatusToDictionary:(NSDictionary*)status withError:(NSError**)error
+- (NSDictionary*)readStatusToDictionaryWithError:(NSError**)error;
 {
     NSMutableDictionary* tempStatus;
     char* statusString;
@@ -482,8 +482,47 @@ UART_t myUART;
     }
     
     // copy the temp dictionary to a non-mutable dictionary
-    status = [tempStatus copy];
+    return [tempStatus copy];
+}
+
+- (BOOL)setClawSpeed:(NSInteger)clawPeriod withError:(NSError**)error
+{
+    char sendBuffer[100];
+    char recieveBuffer[3000];
+    int num_bytes;
     
+    if(_clawStepperEnabled == FALSE)
+    {
+        return FALSE;
+    }
+    
+    printf("\n**Do set_stepper_period %d:\n", (int)clawPeriod);
+
+    // Write to the serial port
+    strcpy(sendBuffer, [[NSString stringWithFormat:@"set_stepper_period %ld\n", (long)clawPeriod] cStringUsingEncoding:NSUTF8StringEncoding]);
+    
+    num_bytes = (int)write(myUART.uartFileHandle, sendBuffer, strlen(sendBuffer)); // Returns the number of bytes written
+    tcdrain(myUART.uartFileHandle);
+    if (num_bytes < 0)
+    {
+        printf("Error writing: %s\n", strerror(errno));
+        close(myUART.uartFileHandle);
+        return EXIT_FAILURE;
+    }
+    usleep(100000);
+    
+    // Read from the serial port
+    num_bytes = (int)read(myUART.uartFileHandle, recieveBuffer, sizeof(recieveBuffer));
+    if (num_bytes < 0)
+    {
+        printf("Error reading: %s\n", strerror(errno));
+    }
+    else
+    {
+        // Process the data in read_buf
+        recieveBuffer[num_bytes] = 0; // make sure we are null terminated
+        printf("Read %i bytes. Received data: \n%s\n", num_bytes, recieveBuffer);
+    }
     return TRUE;
 }
 

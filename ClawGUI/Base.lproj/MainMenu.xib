@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="_serialPortComboBox" destination="6mx-JR-Ebl" id="nFi-K9-fis"/>
                 <outlet property="clawPositionSlider" destination="Jh7-mq-Acs" id="HkC-6b-2IA"/>
+                <outlet property="clawSpeedSlider" destination="gEF-fU-cjj" id="Viv-Th-SyJ"/>
                 <outlet property="connectButton" destination="HqW-jM-YK5" id="MeJ-fP-mc6"/>
                 <outlet property="enableClawButton" destination="FZW-fP-Wxj" id="aZe-Na-WKo"/>
                 <outlet property="readStatusButton" destination="1AD-O0-iQO" id="8dx-Gx-DcF"/>
@@ -690,14 +691,14 @@
         <window title="ClawGUI" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="317" height="150"/>
+            <rect key="contentRect" x="335" y="390" width="317" height="206"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1728" height="1079"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="317" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="317" height="206"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6mx-JR-Ebl">
-                        <rect key="frame" x="19" y="108" width="160" height="23"/>
+                        <rect key="frame" x="19" y="164" width="160" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="QnB-I9-YyL">
                             <font key="font" metaFont="system"/>
@@ -711,7 +712,7 @@
                         </comboBoxCell>
                     </comboBox>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqW-jM-YK5">
-                        <rect key="frame" x="177" y="103" width="127" height="32"/>
+                        <rect key="frame" x="177" y="159" width="127" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="z82-0Z-3n7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -722,7 +723,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZW-fP-Wxj">
-                        <rect key="frame" x="177" y="71" width="127" height="32"/>
+                        <rect key="frame" x="177" y="127" width="127" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B9i-Po-jha">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -733,7 +734,7 @@
                         </connections>
                     </button>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jh7-mq-Acs">
-                        <rect key="frame" x="18" y="40" width="281" height="28"/>
+                        <rect key="frame" x="18" y="96" width="281" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="raz-CZ-xip">
                             <font key="font" metaFont="system" size="12"/>
@@ -754,7 +755,7 @@
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4XH-Yt-fcs">
-                        <rect key="frame" x="18" y="74" width="86" height="16"/>
+                        <rect key="frame" x="18" y="130" width="86" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Claw Position" id="AJn-0B-Sp1">
                             <font key="font" metaFont="system"/>
@@ -773,12 +774,31 @@
                             <action selector="readStatusButtonPressed:" target="Voe-Tx-rLC" id="CcJ-0w-KYf"/>
                         </connections>
                     </button>
+                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gEF-fU-cjj">
+                        <rect key="frame" x="18" y="44" width="281" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="aAV-om-ak8">
+                            <font key="font" metaFont="system" size="12"/>
+                        </sliderCell>
+                        <connections>
+                            <action selector="speedSliderMoved:" target="Voe-Tx-rLC" id="om7-gZ-YER"/>
+                        </connections>
+                    </slider>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hdx-z5-FFn">
+                        <rect key="frame" x="18" y="78" width="76" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Claw Speed" id="SLT-zY-86T">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="top-28-M4D"/>
             </connections>
-            <point key="canvasLocation" x="118.5" y="295"/>
+            <point key="canvasLocation" x="118.5" y="323"/>
         </window>
     </objects>
 </document>

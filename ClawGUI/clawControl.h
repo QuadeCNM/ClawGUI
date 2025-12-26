@@ -9,6 +9,9 @@
 
 #define CLAW_CONTROL_INVALID_PORT_PATH      100
 
+#define CLAW_MAX_PERIOD                     400
+#define CLAW_MIN_PERIOD                     40
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface clawControl : NSObject
@@ -27,7 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)disableClawStepperWithError:(NSError**)error;
 - (BOOL)setClawPosition:(NSInteger) clawPosition withError:(NSError**)error;
 - (BOOL)stopClawMotionWithError:(NSError**)error;
-- (BOOL)readStatusToDictionary:(NSDictionary*)status withError:(NSError**)error;
+- (NSDictionary*)readStatusToDictionaryWithError:(NSError**)error;
+- (BOOL)setClawSpeed:(NSInteger)clawPeriod withError:(NSError**)error;
 
 @end
 
