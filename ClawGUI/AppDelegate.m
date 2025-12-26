@@ -18,6 +18,7 @@
 @interface AppDelegate ()
 {
     bool serialPortConnected;
+    bool calibrationModeEnabled;
 }
 
 @property clawControl *claw;
@@ -29,6 +30,9 @@
 @property (strong) IBOutlet NSButton *stopClawButton;
 @property (strong) IBOutlet NSButton *readStatusButton;
 @property (strong) IBOutlet NSSlider *clawSpeedSlider;
+@property (strong) IBOutlet NSButton *enableCalibrationButton;
+@property (strong) IBOutlet NSButton *setOriginButton;
+@property (strong) IBOutlet NSButton *bumpOriginDownButton;
 
 @end
 
@@ -49,7 +53,7 @@
     
     for(id fileName in devFiles)
     {
-        if([fileName containsString:@"cu."])
+        if([fileName containsString:@"cu.usbmodem"])
         {
             [serialDevices addObject:[fileName copy]];
         }
@@ -86,6 +90,11 @@
     
     [_readStatusButton setEnabled:FALSE];
     
+    [_enableCalibrationButton setEnabled:FALSE];
+    [_setOriginButton setEnabled:FALSE];
+    [_bumpOriginDownButton setEnabled:FALSE];
+    calibrationModeEnabled = FALSE;
+    
     _claw = [[clawControl alloc] init];
 }
 
@@ -116,13 +125,13 @@
         [_enableClawButton setEnabled:TRUE];
         [_stopClawButton setEnabled:TRUE];
         [_readStatusButton setEnabled:TRUE];
-        [_clawSpeedSlider setEnabled:TRUE];
         
         NSDictionary* status = [_claw readStatusToDictionaryWithError:&error];
         
         if(status != nil)
         {
             [_clawSpeedSlider setDoubleValue:[self convertPeriodToSpeed:[[status valueForKey:@"Step Period"] integerValue]]];
+            [_clawPositionSlider setFloatValue:(((double)[[status valueForKey:@"Current Position"] integerValue]/(double)MAX_STEPPER_POSITION) * 100.0)];
         }
     }
     else // we are disabling
@@ -147,6 +156,10 @@
         [_stopClawButton setEnabled:FALSE];
         [_readStatusButton setEnabled:FALSE];
         [_clawSpeedSlider setEnabled:FALSE];
+        [_setOriginButton setEnabled:FALSE];
+        [_bumpOriginDownButton setEnabled:FALSE];
+        calibrationModeEnabled = FALSE;
+        [_enableCalibrationButton setTitle:@"Enable Cal"];
     }
     
 }
@@ -162,6 +175,8 @@
         { // do GUI stuff
             [_enableClawButton setTitle:@"Disable Claw"];
             [_clawPositionSlider setEnabled:TRUE];
+            [_clawSpeedSlider setEnabled:TRUE];
+            [_enableCalibrationButton setEnabled:TRUE];
         }
     }
     else
@@ -170,6 +185,12 @@
         { // do GUI stuff
             [_enableClawButton setTitle:@"Enable Claw"];
             [_clawPositionSlider setEnabled:FALSE];
+            [_clawSpeedSlider setEnabled:FALSE];
+            [_enableCalibrationButton setEnabled:FALSE];
+            [_setOriginButton setEnabled:FALSE];
+            [_bumpOriginDownButton setEnabled:FALSE];
+            calibrationModeEnabled = FALSE;
+            [_enableCalibrationButton setTitle:@"Enable Cal"];
         }
     }
 }
@@ -194,9 +215,7 @@
         
         if(status != nil)
         {
-            NSInteger stepPosition = [[status valueForKey:@"Current Position"] integerValue];
-            double clawPositionSliderValue = (((double)stepPosition/(double)MAX_STEPPER_POSITION) * 100.0);
-            [_clawPositionSlider setFloatValue:clawPositionSliderValue];
+            [_clawPositionSlider setFloatValue:(((double)[[status valueForKey:@"Current Position"] integerValue]/(double)MAX_STEPPER_POSITION) * 100.0)];
         }
     }
 }
@@ -231,6 +250,42 @@
         [_claw setClawSpeed:[self convertSpeedToPeriod:[_clawSpeedSlider integerValue]] withError:&error];
     }
     
+}
+
+- (IBAction)enableCalibrationButtonPressed:(id)sender
+{
+    if(calibrationModeEnabled == FALSE)
+    {
+        [_setOriginButton setEnabled:TRUE];
+        [_bumpOriginDownButton setEnabled:TRUE];
+        calibrationModeEnabled = TRUE;
+        [_enableCalibrationButton setTitle:@"Disable Cal"];
+    }
+    else
+    {
+        [_setOriginButton setEnabled:FALSE];
+        [_bumpOriginDownButton setEnabled:FALSE];
+        calibrationModeEnabled = FALSE;
+        [_enableCalibrationButton setTitle:@"Enable Cal"];
+    }
+}
+
+- (IBAction)setOriginButtonPressed:(id)sender
+{
+    NSError *error = nil;
+    if(([_claw connectionStatus] == TRUE) && ([_claw clawStepperEnabled] == TRUE))
+    {
+        [_claw setClawZeroWithError:&error];
+    }
+}
+
+- (IBAction)BumpOriginDownButtonPressed:(id)sender
+{
+    NSError *error = nil;
+    if(([_claw connectionStatus] == TRUE) && ([_claw clawStepperEnabled] == TRUE))
+    {
+        [_claw bumpClawZeroDownWithError:&error];
+    }
 }
 
 @end

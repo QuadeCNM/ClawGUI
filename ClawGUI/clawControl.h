@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)stopClawMotionWithError:(NSError**)error;
 - (NSDictionary*)readStatusToDictionaryWithError:(NSError**)error;
 - (BOOL)setClawSpeed:(NSInteger)clawPeriod withError:(NSError**)error;
+- (BOOL)setClawZeroWithError:(NSError**)error;
+- (BOOL)bumpClawZeroDownWithError:(NSError**)error;
 
 @end
 

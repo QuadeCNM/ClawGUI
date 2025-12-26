@@ -25,5 +25,12 @@
 - (IBAction)readStatusButtonPressed:(id)sender;
 
 - (IBAction)speedSliderMoved:(id)sender;
+
+- (IBAction)enableCalibrationButtonPressed:(id)sender;
+
+- (IBAction)setOriginButtonPressed:(id)sender;
+
+- (IBAction)BumpOriginDownButtonPressed:(id)sender;
+
 @end
 

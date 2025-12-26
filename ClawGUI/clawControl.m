@@ -526,6 +526,88 @@ UART_t myUART;
     return TRUE;
 }
 
+- (BOOL)setClawZeroWithError:(NSError**)error
+{
+    char sendBuffer[100];
+    char recieveBuffer[3000];
+    int num_bytes;
+    
+    if(_clawStepperEnabled == FALSE)
+    {
+        return FALSE;
+    }
+    
+    printf("\n**Do set_stepper_zero:\n");
+
+    // Write to the serial port
+    strcpy(sendBuffer, "set_stepper_zero\n");
+    
+    num_bytes = (int)write(myUART.uartFileHandle, sendBuffer, strlen(sendBuffer)); // Returns the number of bytes written
+    tcdrain(myUART.uartFileHandle);
+    if (num_bytes < 0)
+    {
+        printf("Error writing: %s\n", strerror(errno));
+        close(myUART.uartFileHandle);
+        return EXIT_FAILURE;
+    }
+    usleep(100000);
+    
+    // Read from the serial port
+    num_bytes = (int)read(myUART.uartFileHandle, recieveBuffer, sizeof(recieveBuffer));
+    if (num_bytes < 0)
+    {
+        printf("Error reading: %s\n", strerror(errno));
+    }
+    else
+    {
+        // Process the data in read_buf
+        recieveBuffer[num_bytes] = 0; // make sure we are null terminated
+        printf("Read %i bytes. Received data: \n%s\n", num_bytes, recieveBuffer);
+    }
+    return TRUE;
+}
+
+- (BOOL)bumpClawZeroDownWithError:(NSError**)error
+{
+    char sendBuffer[100];
+    char recieveBuffer[3000];
+    int num_bytes;
+    
+    if(_clawStepperEnabled == FALSE)
+    {
+        return FALSE;
+    }
+    
+    printf("\n**Do move_stepper_bump_down:\n");
+
+    // Write to the serial port
+    strcpy(sendBuffer, "move_stepper_bump_down\n");
+    
+    num_bytes = (int)write(myUART.uartFileHandle, sendBuffer, strlen(sendBuffer)); // Returns the number of bytes written
+    tcdrain(myUART.uartFileHandle);
+    if (num_bytes < 0)
+    {
+        printf("Error writing: %s\n", strerror(errno));
+        close(myUART.uartFileHandle);
+        return EXIT_FAILURE;
+    }
+    usleep(100000);
+    
+    // Read from the serial port
+    num_bytes = (int)read(myUART.uartFileHandle, recieveBuffer, sizeof(recieveBuffer));
+    if (num_bytes < 0)
+    {
+        printf("Error reading: %s\n", strerror(errno));
+    }
+    else
+    {
+        // Process the data in read_buf
+        recieveBuffer[num_bytes] = 0; // make sure we are null terminated
+        printf("Read %i bytes. Received data: \n%s\n", num_bytes, recieveBuffer);
+    }
+    return TRUE;
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

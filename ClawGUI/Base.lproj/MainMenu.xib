@@ -15,12 +15,15 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="_serialPortComboBox" destination="6mx-JR-Ebl" id="nFi-K9-fis"/>
+                <outlet property="bumpOriginDownButton" destination="ZGP-UB-jjH" id="kjM-6R-Jqv"/>
                 <outlet property="clawPositionSlider" destination="Jh7-mq-Acs" id="HkC-6b-2IA"/>
                 <outlet property="clawSpeedSlider" destination="gEF-fU-cjj" id="Viv-Th-SyJ"/>
                 <outlet property="connectButton" destination="HqW-jM-YK5" id="MeJ-fP-mc6"/>
+                <outlet property="enableCalibrationButton" destination="SY0-d1-KLd" id="YnI-hr-wZD"/>
                 <outlet property="enableClawButton" destination="FZW-fP-Wxj" id="aZe-Na-WKo"/>
                 <outlet property="readStatusButton" destination="1AD-O0-iQO" id="8dx-Gx-DcF"/>
                 <outlet property="serialPortComboBox" destination="6mx-JR-Ebl" id="mlv-jd-bV0"/>
+                <outlet property="setOriginButton" destination="Mo0-NV-ENZ" id="vPW-0s-bth"/>
                 <outlet property="stopClawButton" destination="XdC-hd-Vpa" id="v2Q-sU-Vy7"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -691,14 +694,18 @@
         <window title="ClawGUI" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="317" height="206"/>
+            <rect key="contentRect" x="335" y="390" width="366" height="279"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1728" height="1079"/>
+            <value key="minSize" type="size" width="366" height="279"/>
+            <value key="maxSize" type="size" width="366" height="279"/>
+            <value key="minFullScreenContentSize" type="size" width="366" height="279"/>
+            <value key="maxFullScreenContentSize" type="size" width="366" height="279"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="317" height="206"/>
+                <rect key="frame" x="0.0" y="0.0" width="366" height="279"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <comboBox focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6mx-JR-Ebl">
-                        <rect key="frame" x="19" y="164" width="160" height="23"/>
+                        <rect key="frame" x="17" y="237" width="211" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="QnB-I9-YyL">
                             <font key="font" metaFont="system"/>
@@ -712,7 +719,7 @@
                         </comboBoxCell>
                     </comboBox>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqW-jM-YK5">
-                        <rect key="frame" x="177" y="159" width="127" height="32"/>
+                        <rect key="frame" x="226" y="232" width="127" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="z82-0Z-3n7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -723,7 +730,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZW-fP-Wxj">
-                        <rect key="frame" x="177" y="127" width="127" height="32"/>
+                        <rect key="frame" x="226" y="200" width="127" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B9i-Po-jha">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -734,7 +741,7 @@
                         </connections>
                     </button>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jh7-mq-Acs">
-                        <rect key="frame" x="18" y="96" width="281" height="28"/>
+                        <rect key="frame" x="18" y="169" width="330" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="raz-CZ-xip">
                             <font key="font" metaFont="system" size="12"/>
@@ -744,7 +751,7 @@
                         </connections>
                     </slider>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XdC-hd-Vpa">
-                        <rect key="frame" x="213" y="13" width="91" height="32"/>
+                        <rect key="frame" x="262" y="86" width="91" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="🛑 STOP" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pPt-wB-yjF">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -755,7 +762,7 @@
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4XH-Yt-fcs">
-                        <rect key="frame" x="18" y="130" width="86" height="16"/>
+                        <rect key="frame" x="18" y="203" width="86" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Claw Position" id="AJn-0B-Sp1">
                             <font key="font" metaFont="system"/>
@@ -764,7 +771,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1AD-O0-iQO">
-                        <rect key="frame" x="13" y="13" width="107" height="32"/>
+                        <rect key="frame" x="13" y="86" width="107" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Read Status" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wQZ-S9-pbR">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -775,7 +782,7 @@
                         </connections>
                     </button>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gEF-fU-cjj">
-                        <rect key="frame" x="18" y="44" width="281" height="28"/>
+                        <rect key="frame" x="18" y="117" width="330" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="aAV-om-ak8">
                             <font key="font" metaFont="system" size="12"/>
@@ -785,7 +792,7 @@
                         </connections>
                     </slider>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hdx-z5-FFn">
-                        <rect key="frame" x="18" y="78" width="76" height="16"/>
+                        <rect key="frame" x="18" y="151" width="76" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Claw Speed" id="SLT-zY-86T">
                             <font key="font" metaFont="system"/>
@@ -793,12 +800,58 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="SQR-16-5gR">
+                        <rect key="frame" x="20" y="70" width="326" height="5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </box>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SY0-d1-KLd">
+                        <rect key="frame" x="13" y="13" width="107" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Enable Cal" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xrb-C8-SkD">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="enableCalibrationButtonPressed:" target="Voe-Tx-rLC" id="Tei-pb-GJu"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGP-UB-jjH">
+                        <rect key="frame" x="246" y="13" width="107" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Bump Down" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IYY-FR-8NU">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="BumpOriginDownButtonPressed:" target="Voe-Tx-rLC" id="bTf-yx-oV4"/>
+                        </connections>
+                    </button>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNY-IL-ZdO">
+                        <rect key="frame" x="18" y="48" width="135" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Calibration - Set Zero" id="Zg8-d2-joj">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mo0-NV-ENZ">
+                        <rect key="frame" x="130" y="13" width="107" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Set Origin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YfN-TK-WH2">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setOriginButtonPressed:" target="Voe-Tx-rLC" id="lHW-je-5Gn"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="top-28-M4D"/>
             </connections>
-            <point key="canvasLocation" x="118.5" y="323"/>
+            <point key="canvasLocation" x="143" y="359.5"/>
         </window>
     </objects>
 </document>
