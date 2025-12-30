@@ -215,6 +215,7 @@
         
         if(status != nil)
         {
+            [_clawSpeedSlider setDoubleValue:[self convertPeriodToSpeed:[[status valueForKey:@"Step Period"] integerValue]]];
             [_clawPositionSlider setFloatValue:(((double)[[status valueForKey:@"Current Position"] integerValue]/(double)MAX_STEPPER_POSITION) * 100.0)];
         }
     }
@@ -222,10 +223,15 @@
 
 - (IBAction)readStatusButtonPressed:(id)sender
 {
-    NSDictionary* status;
     NSError *error = nil;
     
-    status = [_claw readStatusToDictionaryWithError:&error];
+    NSDictionary* status = [_claw readStatusToDictionaryWithError:&error];
+    
+    if(status != nil)
+    {
+        [_clawSpeedSlider setDoubleValue:[self convertPeriodToSpeed:[[status valueForKey:@"Step Period"] integerValue]]];
+        [_clawPositionSlider setFloatValue:(((double)[[status valueForKey:@"Current Position"] integerValue]/(double)MAX_STEPPER_POSITION) * 100.0)];
+    }
 }
 
 - (NSInteger)convertSpeedToPeriod:(NSInteger)speed
