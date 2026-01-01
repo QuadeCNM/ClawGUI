@@ -67,11 +67,29 @@
         [_serialPortComboBox addItemWithObjectValue:filename];
     }
     
-    [_serialPortComboBox selectItemAtIndex:0];
-    [_serialPortComboBox setEnabled:TRUE];
-    
-    [_connectButton setTitle:@"Connect"];
-    [_connectButton setEnabled:TRUE];
+    // Only select combo box if we have a serial port device found.
+    if([serialDevices count] > 0)
+    {
+        [_serialPortComboBox selectItemAtIndex:0];
+        [_serialPortComboBox setEnabled:TRUE];
+        [_connectButton setTitle:@"Connect"];
+        [_connectButton setEnabled:TRUE];
+    }
+    else
+    {
+        [_serialPortComboBox setEnabled:FALSE];
+        [_connectButton setTitle:@"Connect"];
+        [_connectButton setEnabled:FALSE];
+        
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"No Serial Devices Found for Claw",
+                                    NSLocalizedRecoverySuggestionErrorKey : @"Claw devices need to be serial ports in /dev/ that start with \"cu.usbmodem\".  Please quit application and connect Claw device.",
+                                    NSLocalizedFailureReasonErrorKey : @"Claw devices need to be serial ports in /dev/ that start with \"cu.usbmodem\""};
+        NSError *error = [NSError errorWithDomain:@"com.jon-wade.ClawGUI.SerialError"
+                                             code:101
+                                         userInfo:userInfo];
+        [NSApp presentError:error];
+        
+    }
     
     [_enableClawButton setTitle:@"Enable Claw"];
     [_enableClawButton setEnabled:FALSE];
@@ -171,7 +189,7 @@
     if([_claw clawStepperEnabled] == FALSE)
     {
         // do serial stuff to enable claw stepper
-        if([_claw enableClawStepperWithError:&error])
+        if([_claw enableClawStepperWithError:&error] == EXIT_SUCCESS)
         { // do GUI stuff
             [_enableClawButton setTitle:@"Disable Claw"];
             [_clawPositionSlider setEnabled:TRUE];
@@ -181,7 +199,7 @@
     }
     else
     {
-        if([_claw disableClawStepperWithError:&error])
+        if([_claw disableClawStepperWithError:&error] == EXIT_SUCCESS)
         { // do GUI stuff
             [_enableClawButton setTitle:@"Enable Claw"];
             [_clawPositionSlider setEnabled:FALSE];
