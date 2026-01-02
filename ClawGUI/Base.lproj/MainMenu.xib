@@ -744,7 +744,7 @@
                         <rect key="frame" x="18" y="169" width="330" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="raz-CZ-xip">
-                            <font key="font" metaFont="system" size="12"/>
+                            <font key="font" metaFont="cellTitle"/>
                         </sliderCell>
                         <connections>
                             <action selector="PositionSliderMoved:" target="Voe-Tx-rLC" id="hxU-J1-fg0"/>
@@ -785,7 +785,7 @@
                         <rect key="frame" x="18" y="117" width="330" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="aAV-om-ak8">
-                            <font key="font" metaFont="system" size="12"/>
+                            <font key="font" metaFont="cellTitle"/>
                         </sliderCell>
                         <connections>
                             <action selector="speedSliderMoved:" target="Voe-Tx-rLC" id="om7-gZ-YER"/>

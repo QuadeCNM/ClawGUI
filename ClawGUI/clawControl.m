@@ -25,15 +25,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation clawControl
 
+/**
+    * @brief Structure to hold UART data and state, include termios options
+ */
 typedef struct UART
 {
-    int     uartFileHandle;
-    char*   uartPath;
-    int     uartBaud;
-    int     uartParity;
-    int     uartStopBits;
-    int     uartByteSize;
-    struct  termios uartOptions;
+    int     uartFileHandle;         //!< File handle for UART device descriptor
+    char*   uartPath;               //!< Absolute path to UART file descriptor, should be in /dev/
+    int     uartBaud;               //!< UART Baud Rate
+    int     uartParity;             //!< UART Parity (Even/Odd/None)
+    int     uartStopBits;           //!< UART Stop Bits
+    int     uartByteSize;           //!< UART Byte Size, should be 8
+    struct  termios uartOptions;    //!< termios UART Options, This is where the actual options get stored.
 } UART_t;
 
 UART_t myUART;
@@ -649,7 +652,7 @@ UART_t myUART;
             value = [NSNumber numberWithBool:FALSE];
             
         [tempStatus setValue:value
-                      forKey:@"EStop"];
+                      forKey:@"Estop"];
     }
     
     // copy the temp dictionary to a non-mutable dictionary
