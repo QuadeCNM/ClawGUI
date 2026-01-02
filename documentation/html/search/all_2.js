@@ -1,7 +1,23 @@
 var searchData=
 [
-  ['clawcontrol_0',['clawControl',['../interfaceclaw_control.html',1,'']]],
-  ['clawstepperenabled_1',['clawStepperEnabled',['../interfaceclaw_control.html#a6d6560416b2ef7e210c2ee4b2ef06b5b',1,'clawControl']]],
-  ['connectionstatus_2',['connectionStatus',['../interfaceclaw_control.html#ad2eb2fef1b60703a84510b2c051a69eb',1,'clawControl']]],
-  ['connecttoserialportwitherror_3a_3',['connectToSerialPortWithError:',['../interfaceclaw_control.html#a153fc177967219fed9179c03fb81da41',1,'clawControl']]]
+  ['calibrationmodeenabled_0',['calibrationModeEnabled',['../category_app_delegate_07_08.html#a655076b548621bd9889a9ea10bfc0d26',1,'AppDelegate()']]],
+  ['claw_1',['claw',['../category_app_delegate_07_08.html#a79b8ce502a517fbf5b5bed624dee932e',1,'AppDelegate()']]],
+  ['claw_5ferror_5fdomain_2',['CLAW_ERROR_DOMAIN',['../claw_control_8h.html#aefafae5d6d8677842b472ba59110d911',1,'clawControl.h']]],
+  ['claw_5ferror_5fincorrect_5fresponse_3',['CLAW_ERROR_INCORRECT_RESPONSE',['../claw_control_8h.html#a83a1e440f5afcd1ed53c47a39db0bf92',1,'clawControl.h']]],
+  ['claw_5ferror_5finvalid_5fport_5fpath_4',['CLAW_ERROR_INVALID_PORT_PATH',['../claw_control_8h.html#a6c01af9c41b122682e7b8737a674dea6',1,'clawControl.h']]],
+  ['claw_5ferror_5fno_5fdata_5fto_5fread_5',['CLAW_ERROR_NO_DATA_TO_READ',['../claw_control_8h.html#a942f59d4a864ff11a89bdf81090c71ba',1,'clawControl.h']]],
+  ['claw_5ferror_5fstepper_5fnot_5fconnected_6',['CLAW_ERROR_STEPPER_NOT_CONNECTED',['../claw_control_8h.html#a927af692fa16d1dd23905bbf4dc62792',1,'clawControl.h']]],
+  ['claw_5ferror_5fstepper_5fnot_5fenabled_7',['CLAW_ERROR_STEPPER_NOT_ENABLED',['../claw_control_8h.html#af17582aca9216eabae45f42aacf63e49',1,'clawControl.h']]],
+  ['claw_5fmax_5fperiod_8',['CLAW_MAX_PERIOD',['../claw_control_8h.html#a85f4c622e82f639bc1c8979f4f57a9e2',1,'clawControl.h']]],
+  ['claw_5fmin_5fperiod_9',['CLAW_MIN_PERIOD',['../claw_control_8h.html#a963bf5d5c2a600351bc0ab1a293ff677',1,'clawControl.h']]],
+  ['clawcontrol_10',['clawControl',['../interfaceclaw_control.html',1,'']]],
+  ['clawcontrol_2eh_11',['clawControl.h',['../claw_control_8h.html',1,'']]],
+  ['clawcontrol_2em_12',['clawControl.m',['../claw_control_8m.html',1,'']]],
+  ['clawpositionslider_13',['clawPositionSlider',['../category_app_delegate_07_08.html#adfb64b0f2f2d4f8b33e0974a14ceead0',1,'AppDelegate()']]],
+  ['clawspeedslider_14',['clawSpeedSlider',['../category_app_delegate_07_08.html#ad982264305c92b5067b78d5190247824',1,'AppDelegate()']]],
+  ['clawstepperenabled_15',['clawStepperEnabled',['../interfaceclaw_control.html#a6d6560416b2ef7e210c2ee4b2ef06b5b',1,'clawControl']]],
+  ['connectbutton_16',['connectButton',['../category_app_delegate_07_08.html#a4da16777f791bec80bd414e3fa4cb9d6',1,'AppDelegate()']]],
+  ['connectbuttonpressed_3a_17',['connectButtonPressed:',['../interface_app_delegate.html#a2cafd422f095407c87afc362ead7a176',1,'AppDelegate']]],
+  ['connectionstatus_18',['connectionStatus',['../interfaceclaw_control.html#ad2eb2fef1b60703a84510b2c051a69eb',1,'clawControl']]],
+  ['connecttoserialportwitherror_3a_19',['connectToSerialPortWithError:',['../interfaceclaw_control.html#a153fc177967219fed9179c03fb81da41',1,'clawControl']]]
 ];

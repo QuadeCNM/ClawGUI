@@ -96,35 +96,49 @@ $(function(){initNavTree('category_app_delegate_07_08.html','','category_app_del
 Protected Attributes</h2></td></tr>
 <tr class="memitem:ae71abe38499834c4336571f0f5fd840c" id="r_ae71abe38499834c4336571f0f5fd840c"><td class="memItemLeft"><a id="ae71abe38499834c4336571f0f5fd840c" name="ae71abe38499834c4336571f0f5fd840c"></a>
 bool&#160;</td><td class="memItemRight"><b>serialPortConnected</b></td></tr>
+<tr class="memdesc:ae71abe38499834c4336571f0f5fd840c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Member variable to keep track of serial port conection state. <br /></td></tr>
 <tr class="memitem:a655076b548621bd9889a9ea10bfc0d26" id="r_a655076b548621bd9889a9ea10bfc0d26"><td class="memItemLeft"><a id="a655076b548621bd9889a9ea10bfc0d26" name="a655076b548621bd9889a9ea10bfc0d26"></a>
 bool&#160;</td><td class="memItemRight"><b>calibrationModeEnabled</b></td></tr>
+<tr class="memdesc:a655076b548621bd9889a9ea10bfc0d26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Member variable to keep track of calibration mode. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a79b8ce502a517fbf5b5bed624dee932e" id="r_a79b8ce502a517fbf5b5bed624dee932e"><td class="memItemLeft"><a id="a79b8ce502a517fbf5b5bed624dee932e" name="a79b8ce502a517fbf5b5bed624dee932e"></a>
 <a class="el" href="interfaceclaw_control.html">clawControl</a> *&#160;</td><td class="memItemRight"><b>claw</b></td></tr>
+<tr class="memdesc:a79b8ce502a517fbf5b5bed624dee932e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Claw object, used to communicate with claw and issue commands to claw device. <br /></td></tr>
 <tr class="memitem:ab23aa75c68dacbf295bd62577cfbef88" id="r_ab23aa75c68dacbf295bd62577cfbef88"><td class="memItemLeft"><a id="ab23aa75c68dacbf295bd62577cfbef88" name="ab23aa75c68dacbf295bd62577cfbef88"></a>
 IBOutlet NSWindow *&#160;</td><td class="memItemRight"><b>window</b></td></tr>
+<tr class="memdesc:ab23aa75c68dacbf295bd62577cfbef88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main GUI Window. <br /></td></tr>
 <tr class="memitem:aed857c9988a7bd9a7ed836fd086de174" id="r_aed857c9988a7bd9a7ed836fd086de174"><td class="memItemLeft"><a id="aed857c9988a7bd9a7ed836fd086de174" name="aed857c9988a7bd9a7ed836fd086de174"></a>
 IBOutlet NSComboBox *&#160;</td><td class="memItemRight"><b>serialPortComboBox</b></td></tr>
+<tr class="memdesc:aed857c9988a7bd9a7ed836fd086de174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combo box with drop down list of available serial port devices ("/dev/cu.usbmodem*"). <br /></td></tr>
 <tr class="memitem:a4da16777f791bec80bd414e3fa4cb9d6" id="r_a4da16777f791bec80bd414e3fa4cb9d6"><td class="memItemLeft"><a id="a4da16777f791bec80bd414e3fa4cb9d6" name="a4da16777f791bec80bd414e3fa4cb9d6"></a>
 IBOutlet NSButton *&#160;</td><td class="memItemRight"><b>connectButton</b></td></tr>
+<tr class="memdesc:a4da16777f791bec80bd414e3fa4cb9d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button to connect or disconnect from claw device. <br /></td></tr>
 <tr class="memitem:a71764a58e84adaa1ea7d6adc4dbef0c0" id="r_a71764a58e84adaa1ea7d6adc4dbef0c0"><td class="memItemLeft"><a id="a71764a58e84adaa1ea7d6adc4dbef0c0" name="a71764a58e84adaa1ea7d6adc4dbef0c0"></a>
 IBOutlet NSButton *&#160;</td><td class="memItemRight"><b>enableClawButton</b></td></tr>
+<tr class="memdesc:a71764a58e84adaa1ea7d6adc4dbef0c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button to enable stepper motor on claw device. <br /></td></tr>
 <tr class="memitem:adfb64b0f2f2d4f8b33e0974a14ceead0" id="r_adfb64b0f2f2d4f8b33e0974a14ceead0"><td class="memItemLeft"><a id="adfb64b0f2f2d4f8b33e0974a14ceead0" name="adfb64b0f2f2d4f8b33e0974a14ceead0"></a>
 IBOutlet NSSlider *&#160;</td><td class="memItemRight"><b>clawPositionSlider</b></td></tr>
+<tr class="memdesc:adfb64b0f2f2d4f8b33e0974a14ceead0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slider to set position of claw. Also position is moved on a STOP ro READ STATUS. <br /></td></tr>
 <tr class="memitem:aa573154b5d68a5046a499e5e3c0c00ff" id="r_aa573154b5d68a5046a499e5e3c0c00ff"><td class="memItemLeft"><a id="aa573154b5d68a5046a499e5e3c0c00ff" name="aa573154b5d68a5046a499e5e3c0c00ff"></a>
 IBOutlet NSButton *&#160;</td><td class="memItemRight"><b>stopClawButton</b></td></tr>
+<tr class="memdesc:aa573154b5d68a5046a499e5e3c0c00ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button to stop claw motion immediately, somewhat liek an emergency stop, but in software. <br /></td></tr>
 <tr class="memitem:a4d8b1f2bdf2e182f31b143fcf314070f" id="r_a4d8b1f2bdf2e182f31b143fcf314070f"><td class="memItemLeft"><a id="a4d8b1f2bdf2e182f31b143fcf314070f" name="a4d8b1f2bdf2e182f31b143fcf314070f"></a>
 IBOutlet NSButton *&#160;</td><td class="memItemRight"><b>readStatusButton</b></td></tr>
+<tr class="memdesc:a4d8b1f2bdf2e182f31b143fcf314070f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button to read status of claw device. Usefull to update position slider on external E-Stop. <br /></td></tr>
 <tr class="memitem:ad982264305c92b5067b78d5190247824" id="r_ad982264305c92b5067b78d5190247824"><td class="memItemLeft"><a id="ad982264305c92b5067b78d5190247824" name="ad982264305c92b5067b78d5190247824"></a>
 IBOutlet NSSlider *&#160;</td><td class="memItemRight"><b>clawSpeedSlider</b></td></tr>
+<tr class="memdesc:ad982264305c92b5067b78d5190247824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slider to set claw speed, specifically stepper pulse rate, between 2.5kHz and 25kHz. <br /></td></tr>
 <tr class="memitem:afb5465bb7b534bd3e9e07cd6d3748600" id="r_afb5465bb7b534bd3e9e07cd6d3748600"><td class="memItemLeft"><a id="afb5465bb7b534bd3e9e07cd6d3748600" name="afb5465bb7b534bd3e9e07cd6d3748600"></a>
 IBOutlet NSButton *&#160;</td><td class="memItemRight"><b>enableCalibrationButton</b></td></tr>
+<tr class="memdesc:afb5465bb7b534bd3e9e07cd6d3748600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables calibration buttons, specifically "Set Origin" and "Bump Down" Buttons. <br /></td></tr>
 <tr class="memitem:a6834567b43cd57207759dcf8bb69288a" id="r_a6834567b43cd57207759dcf8bb69288a"><td class="memItemLeft"><a id="a6834567b43cd57207759dcf8bb69288a" name="a6834567b43cd57207759dcf8bb69288a"></a>
 IBOutlet NSButton *&#160;</td><td class="memItemRight"><b>setOriginButton</b></td></tr>
+<tr class="memdesc:a6834567b43cd57207759dcf8bb69288a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button to set claw origin to current location. <br /></td></tr>
 <tr class="memitem:a7ab86aad63d7b312731d6f611492b2f2" id="r_a7ab86aad63d7b312731d6f611492b2f2"><td class="memItemLeft"><a id="a7ab86aad63d7b312731d6f611492b2f2" name="a7ab86aad63d7b312731d6f611492b2f2"></a>
 IBOutlet NSButton *&#160;</td><td class="memItemRight"><b>bumpOriginDownButton</b></td></tr>
+<tr class="memdesc:a7ab86aad63d7b312731d6f611492b2f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button to bump down calibrated zero by 1/4 turn to move zero point down a little bit. <br /></td></tr>
 </table>
 <hr/>The documentation for this category was generated from the following file:<ul>
 <li>ClawGUI/<b>AppDelegate.m</b></li>

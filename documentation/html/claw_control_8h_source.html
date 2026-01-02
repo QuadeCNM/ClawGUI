@@ -91,19 +91,19 @@ $(function(){initNavTree('claw_control_8h_source.html','',''); });
   <div class="headertitle"><div class="title">clawControl.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<a href="claw_control_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define CLAW_MAX_PERIOD                     400                                     </span><span class="comment">// Maximum claw step period Freq = 1 / period = 2.5kHz</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define CLAW_MIN_PERIOD                     40                                      </span><span class="comment">// Minimum claw step period Freq = 1 / period = 25kHz</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="claw_control_8h.html#a85f4c622e82f639bc1c8979f4f57a9e2">   15</a></span><span class="preprocessor">#define CLAW_MAX_PERIOD                     400                                     </span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="claw_control_8h.html#a963bf5d5c2a600351bc0ab1a293ff677">   16</a></span><span class="preprocessor">#define CLAW_MIN_PERIOD                     40                                      </span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define CLAW_ERROR_DOMAIN                   @&quot;com.jon-wade.ClawGUI.SerialError&quot;     </span><span class="comment">// NSError domain for errors created in clawControl.c</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define CLAW_ERROR_INVALID_PORT_PATH        100                                     </span><span class="comment">// Error code for invalid serial port path</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define CLAW_ERROR_NO_DATA_TO_READ          101                                     </span><span class="comment">// Error code for no date in receive queue of serial port</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define CLAW_ERROR_STEPPER_NOT_CONNECTED    200                                     </span><span class="comment">// Error code for claw controller not connected to serial port</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define CLAW_ERROR_STEPPER_NOT_ENABLED      201                                     </span><span class="comment">// Error code for claw controller stepper motor not connected</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#define CLAW_ERROR_INCORRECT_RESPONSE       202                                     </span><span class="comment">// Error code for incorrect response to command, specifically status command</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="claw_control_8h.html#aefafae5d6d8677842b472ba59110d911">   18</a></span><span class="preprocessor">#define CLAW_ERROR_DOMAIN                   @&quot;com.jon-wade.ClawGUI.SerialError&quot;     </span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="claw_control_8h.html#a6c01af9c41b122682e7b8737a674dea6">   19</a></span><span class="preprocessor">#define CLAW_ERROR_INVALID_PORT_PATH        100                                     </span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="claw_control_8h.html#a942f59d4a864ff11a89bdf81090c71ba">   20</a></span><span class="preprocessor">#define CLAW_ERROR_NO_DATA_TO_READ          101                                     </span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="claw_control_8h.html#a927af692fa16d1dd23905bbf4dc62792">   21</a></span><span class="preprocessor">#define CLAW_ERROR_STEPPER_NOT_CONNECTED    200                                     </span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="claw_control_8h.html#af17582aca9216eabae45f42aacf63e49">   22</a></span><span class="preprocessor">#define CLAW_ERROR_STEPPER_NOT_ENABLED      201                                     </span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="claw_control_8h.html#a83a1e440f5afcd1ed53c47a39db0bf92">   23</a></span><span class="preprocessor">#define CLAW_ERROR_INCORRECT_RESPONSE       202                                     </span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>NS_ASSUME_NONNULL_BEGIN</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
@@ -159,7 +159,7 @@ $(function(){initNavTree('claw_control_8h_source.html','',''); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>ClawGUI</b></li><li class="navelem"><b>clawControl.h</b></li>
+    <li class="navelem"><b>ClawGUI</b></li><li class="navelem"><a href="claw_control_8h.html">clawControl.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.0 </li>
   </ul>
 </div>

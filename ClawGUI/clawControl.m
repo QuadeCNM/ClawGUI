@@ -1,5 +1,5 @@
 /**
-    * @file clawControl.c
+    * @file clawControl.m
     * @author Jon Wade
     * @date  24 Dec 2025
     * @copyright (c) 2025 Jon Wade. Standard MIT License applies. See LICENSE file.
@@ -37,9 +37,9 @@ typedef struct UART
     int     uartStopBits;           //!< UART Stop Bits
     int     uartByteSize;           //!< UART Byte Size, should be 8
     struct  termios uartOptions;    //!< termios UART Options, This is where the actual options get stored.
-} UART_t;
+} UART_t;                           //!< typedef of UART structure
 
-UART_t myUART;
+UART_t myUART; //!< UART_t structure to hold UART Data
 
 - (NSError*)setClawErrorWithCode:(NSInteger) errorCode
                   andDescription:(NSString*) errorDescription
@@ -72,7 +72,7 @@ UART_t myUART;
                                   andReason:@"Serial port path not defined."
                               andSuggestion:@"Serial Port Path not defined, please verify device name"];
         
-        return NO;
+        return EXIT_FAILURE;
     }
     
     myUART.uartPath = (char*)[pathToSet cStringUsingEncoding:NSUTF8StringEncoding];
@@ -80,7 +80,7 @@ UART_t myUART;
     
     _connectionStatus = FALSE;
     
-    return YES;
+    return EXIT_SUCCESS;
     
 }
 
@@ -255,7 +255,7 @@ UART_t myUART;
     
     _connectionStatus = TRUE;
     
-    return YES;
+    return EXIT_SUCCESS;
 }
 
 - (BOOL)disconnectFromSerialPortWithError:(NSError**)error;
@@ -275,7 +275,7 @@ UART_t myUART;
     // no real effect.  Throwing an error on close has no real recourse.
     *error = nil;
     
-    return YES;
+    return EXIT_SUCCESS;
 }
 
 - (BOOL)enableClawStepperWithError:(NSError**)error
@@ -452,7 +452,7 @@ UART_t myUART;
         recieveBuffer[num_bytes] = 0; // make sure we are null terminated
         NSLog(@"Read %i bytes. Received data: \n%s\n", num_bytes, recieveBuffer);
     }
-    return TRUE;
+    return EXIT_SUCCESS;
 }
 
 - (BOOL)stopClawMotionWithError:(NSError**)error
@@ -507,7 +507,7 @@ UART_t myUART;
         recieveBuffer[num_bytes] = 0; // make sure we are null terminated
         NSLog(@"Read %i bytes. Received data: \n%s\n", num_bytes, recieveBuffer);
     }
-    return TRUE;
+    return EXIT_SUCCESS;
     
 }
 
@@ -711,7 +711,7 @@ UART_t myUART;
         recieveBuffer[num_bytes] = 0; // make sure we are null terminated
         NSLog(@"Read %i bytes. Received data: \n%s\n", num_bytes, recieveBuffer);
     }
-    return TRUE;
+    return EXIT_SUCCESS;
 }
 
 - (BOOL)setClawZeroWithError:(NSError**)error
@@ -766,7 +766,7 @@ UART_t myUART;
         recieveBuffer[num_bytes] = 0; // make sure we are null terminated
         NSLog(@"Read %i bytes. Received data: \n%s\n", num_bytes, recieveBuffer);
     }
-    return TRUE;
+    return EXIT_SUCCESS;
 }
 
 - (BOOL)bumpClawZeroDownWithError:(NSError**)error
@@ -821,7 +821,7 @@ UART_t myUART;
         recieveBuffer[num_bytes] = 0; // make sure we are null terminated
         NSLog(@"Read %i bytes. Received data: \n%s\n", num_bytes, recieveBuffer);
     }
-    return TRUE;
+    return EXIT_SUCCESS;
 }
 
 @end

@@ -1,9 +1,13 @@
-//
-//  AppDelegate.m
-//  ClawGUI
-//
-//  Created by Jon Wade on 12/23/25.
-//
+/**
+    * @file AppDelegatel.m
+    * @author Jon Wade
+    * @date  23 Dec 2025
+    * @copyright (c) 2025 Jon Wade. Standard MIT License applies. See LICENSE file.
+    *
+    * @brief implimentation of AppDelegate, the main GUI deligate
+    *
+    * This file contains the implimentation of the AppDelegate for the main GUI interface of ClawGUI
+*/
 
 #import "AppDelegate.h"
 #import "clawControl.h"
@@ -17,22 +21,22 @@
 
 @interface AppDelegate ()
 {
-    bool serialPortConnected;
-    bool calibrationModeEnabled;
+    bool serialPortConnected;           //!< Member variable to keep track of serial port conection state
+    bool calibrationModeEnabled;        //!< Member variable to keep track of calibration mode
 }
 
-@property clawControl *claw;
-@property (strong) IBOutlet NSWindow *window;
-@property (strong) IBOutlet NSComboBox *serialPortComboBox;
-@property (strong) IBOutlet NSButton *connectButton;
-@property (strong) IBOutlet NSButton *enableClawButton;
-@property (strong) IBOutlet NSSlider *clawPositionSlider;
-@property (strong) IBOutlet NSButton *stopClawButton;
-@property (strong) IBOutlet NSButton *readStatusButton;
-@property (strong) IBOutlet NSSlider *clawSpeedSlider;
-@property (strong) IBOutlet NSButton *enableCalibrationButton;
-@property (strong) IBOutlet NSButton *setOriginButton;
-@property (strong) IBOutlet NSButton *bumpOriginDownButton;
+@property clawControl *claw;                                        //!< Claw object, used to communicate with claw and issue commands to claw device
+@property (strong) IBOutlet NSWindow *window;                       //!< Main GUI Window
+@property (strong) IBOutlet NSComboBox *serialPortComboBox;         //!< Combo box with drop down list of available serial port devices ("/dev/cu.usbmodem*")
+@property (strong) IBOutlet NSButton *connectButton;                //!< Button to connect or disconnect from claw device
+@property (strong) IBOutlet NSButton *enableClawButton;             //!< Button to enable stepper motor on claw device
+@property (strong) IBOutlet NSSlider *clawPositionSlider;           //!< Slider to set position of claw.  Also position is moved on a STOP ro READ STATUS
+@property (strong) IBOutlet NSButton *stopClawButton;               //!< Button to stop claw motion immediately, somewhat liek an emergency stop, but in software
+@property (strong) IBOutlet NSButton *readStatusButton;             //!< Button to read status of claw device.  Usefull to update position slider on external E-Stop
+@property (strong) IBOutlet NSSlider *clawSpeedSlider;              //!< Slider to set claw speed, specifically stepper pulse rate, between 2.5kHz and 25kHz
+@property (strong) IBOutlet NSButton *enableCalibrationButton;      //!< Enables calibration buttons, specifically "Set Origin" and "Bump Down" Buttons
+@property (strong) IBOutlet NSButton *setOriginButton;              //!< Button to set claw origin to current location
+@property (strong) IBOutlet NSButton *bumpOriginDownButton;         //!< Button to bump down calibrated zero by 1/4 turn to move zero point down a little bit
 
 @end
 
@@ -133,9 +137,18 @@
     // we are connecting since previous status was disabled
     if(serialPortConnected == FALSE)
     {
-        [_claw setDevicePathWith:[NSString stringWithFormat:@"/dev/%s", [[_serialPortComboBox stringValue] cStringUsingEncoding:NSUTF8StringEncoding]]
-                       withError:&error];
-        [_claw connectToSerialPortWithError:&error];
+        if([_claw setDevicePathWith:[NSString stringWithFormat:@"/dev/%s", [[_serialPortComboBox stringValue] cStringUsingEncoding:NSUTF8StringEncoding]]
+                       withError:&error] == EXIT_FAILURE)
+        {
+            [NSApp presentError:error];
+            return;
+        }
+        
+        if([_claw connectToSerialPortWithError:&error] == EXIT_FAILURE)
+        {
+            [NSApp presentError:error];
+            return;
+        }
         [_connectButton setTitle:@"Disconnect"];
         [_serialPortComboBox setEnabled:FALSE];
         serialPortConnected = TRUE;
@@ -157,14 +170,24 @@
         // if claw is not disabled, then disable it.
         if([_claw clawStepperEnabled])
         {
-            if([_claw disableClawStepperWithError:&error])
+            if([_claw disableClawStepperWithError:&error] == EXIT_SUCCESS)
             { // do GUI stuff
                 [_enableClawButton setTitle:@"Enable Claw"];
                 [_clawPositionSlider setEnabled:FALSE];
             }
+            else
+            {
+                [NSApp presentError:error];
+                return;
+            }
         }
             
-        [_claw disconnectFromSerialPortWithError:&error];
+        // disconnect from serial port
+        if([_claw disconnectFromSerialPortWithError:&error] == EXIT_FAILURE)
+        {
+            [NSApp presentError:error];
+            return;
+        }
         [_connectButton setTitle:@"Connect"];
         [_serialPortComboBox setEnabled:TRUE];
         serialPortConnected = FALSE;
@@ -196,6 +219,11 @@
             [_clawSpeedSlider setEnabled:TRUE];
             [_enableCalibrationButton setEnabled:TRUE];
         }
+        else
+        {
+            [NSApp presentError:error];
+            return;
+        }
     }
     else
     {
@@ -210,6 +238,11 @@
             calibrationModeEnabled = FALSE;
             [_enableCalibrationButton setTitle:@"Enable Cal"];
         }
+        else
+        {
+            [NSApp presentError:error];
+            return;
+        }
     }
 }
 
@@ -218,7 +251,10 @@
     NSError *error = nil;
     if(([_claw connectionStatus] == TRUE) && ([_claw clawStepperEnabled] == TRUE))
     {
-        [_claw setClawPosition:[_clawPositionSlider intValue] withError:&error];
+        if([_claw setClawPosition:[_clawPositionSlider intValue] withError:&error] == EXIT_FAILURE)
+        {
+            [NSApp presentError:error];
+        }
     }
 }
 
@@ -227,9 +263,18 @@
     NSError *error = nil;
     if([_claw connectionStatus] == TRUE)
     {
-        [_claw stopClawMotionWithError:&error];
+        if([_claw stopClawMotionWithError:&error] == EXIT_FAILURE)
+        {
+            [NSApp presentError:error];
+            return;
+        }
         
         NSDictionary* status = [_claw readStatusToDictionaryWithError:&error];
+        if(error != nil)
+        {
+            [NSApp presentError:error];
+            return;
+        }
         
         if(status != nil)
         {
@@ -244,6 +289,11 @@
     NSError *error = nil;
     
     NSDictionary* status = [_claw readStatusToDictionaryWithError:&error];
+    if(error != nil)
+    {
+        [NSApp presentError:error];
+        return;
+    }
     
     if(status != nil)
     {
@@ -271,7 +321,10 @@
     NSError *error = nil;
     if(([_claw connectionStatus] == TRUE) && ([_claw clawStepperEnabled] == TRUE))
     {
-        [_claw setClawSpeed:[self convertSpeedToPeriod:[_clawSpeedSlider integerValue]] withError:&error];
+        if([_claw setClawSpeed:[self convertSpeedToPeriod:[_clawSpeedSlider integerValue]] withError:&error] == EXIT_FAILURE)
+        {
+            [NSApp presentError:error];
+        }
     }
     
 }
@@ -299,7 +352,10 @@
     NSError *error = nil;
     if(([_claw connectionStatus] == TRUE) && ([_claw clawStepperEnabled] == TRUE))
     {
-        [_claw setClawZeroWithError:&error];
+        if([_claw setClawZeroWithError:&error] == EXIT_FAILURE)
+        {
+            [NSApp presentError:error];
+        }
     }
 }
 
@@ -308,7 +364,10 @@
     NSError *error = nil;
     if(([_claw connectionStatus] == TRUE) && ([_claw clawStepperEnabled] == TRUE))
     {
-        [_claw bumpClawZeroDownWithError:&error];
+        if([_claw bumpClawZeroDownWithError:&error] == EXIT_FAILURE)
+        {
+            [NSApp presentError:error];
+        }
     }
 }
 

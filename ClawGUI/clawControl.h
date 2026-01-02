@@ -1,5 +1,5 @@
 /**
-    * @file clawControl.c
+    * @file clawControl.h
     * @author Jon Wade
     * @date  24 Dec 2025
     * @copyright (c) 2025 Jon Wade. Standard MIT License applies. See LICENSE file.
@@ -12,15 +12,15 @@
 #import <Foundation/Foundation.h>
 
 
-#define CLAW_MAX_PERIOD                     400                                     // Maximum claw step period Freq = 1 / period = 2.5kHz
-#define CLAW_MIN_PERIOD                     40                                      // Minimum claw step period Freq = 1 / period = 25kHz
+#define CLAW_MAX_PERIOD                     400                                     //!< Maximum claw step period Freq = 1 / period = 2.5kHz
+#define CLAW_MIN_PERIOD                     40                                      //!< Minimum claw step period Freq = 1 / period = 25kHz
 
-#define CLAW_ERROR_DOMAIN                   @"com.jon-wade.ClawGUI.SerialError"     // NSError domain for errors created in clawControl.c
-#define CLAW_ERROR_INVALID_PORT_PATH        100                                     // Error code for invalid serial port path
-#define CLAW_ERROR_NO_DATA_TO_READ          101                                     // Error code for no date in receive queue of serial port
-#define CLAW_ERROR_STEPPER_NOT_CONNECTED    200                                     // Error code for claw controller not connected to serial port
-#define CLAW_ERROR_STEPPER_NOT_ENABLED      201                                     // Error code for claw controller stepper motor not connected
-#define CLAW_ERROR_INCORRECT_RESPONSE       202                                     // Error code for incorrect response to command, specifically status command
+#define CLAW_ERROR_DOMAIN                   @"com.jon-wade.ClawGUI.SerialError"     //!< NSError domain for errors created in clawControl.c
+#define CLAW_ERROR_INVALID_PORT_PATH        100                                     //!< Error code for invalid serial port path
+#define CLAW_ERROR_NO_DATA_TO_READ          101                                     //!< Error code for no date in receive queue of serial port
+#define CLAW_ERROR_STEPPER_NOT_CONNECTED    200                                     //!< Error code for claw controller not connected to serial port
+#define CLAW_ERROR_STEPPER_NOT_ENABLED      201                                     //!< Error code for claw controller stepper motor not connected
+#define CLAW_ERROR_INCORRECT_RESPONSE       202                                     //!< Error code for incorrect response to command, specifically status command
 
 NS_ASSUME_NONNULL_BEGIN
 
